@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Chalatech — POC de metodología aiscrum</title>
+  <meta name="description" content="Landing page de demostración construida siguiendo un grafo de tareas versionado en git (patrón aiscrum / Beads), en vez de un tablero Jira." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="hero">
+    <nav class="nav">
+      <span class="brand">Chalatech</span>
+      <a class="nav-link" href="#como-funciona">Cómo funciona</a>
+      <a class="nav-link" href="#contacto">Contacto</a>
+    </nav>
+    <div class="hero-content">
+      <h1>El backlog de tu equipo de agentes, versionado como el código</h1>
+      <p class="subtitle">
+        Esta misma landing se construyó siguiendo un grafo de dependencias en
+        <code>.aiscrum/issues.jsonl</code>, no un tablero Jira. Cada sección
+        de esta página es una tarea que estuvo bloqueada hasta que su
+        dependencia se cerró con evidencia.
+      </p>
+      <a class="cta" href="#contacto">Quiero ver el repo</a>
+    </div>
+  </header>
+
+  <main>
+    <section id="como-funciona" class="section">
+      <h2>Cómo funciona</h2>
+      <div class="cards">
+        <article class="card">
+          <h3>1. Grafo, no columnas</h3>
+          <p>Las tareas tienen dependencias explícitas. Un agente pregunta
+            <code>aiscrum ready</code> en vez de que un humano arrastre tarjetas.</p>
+        </article>
+        <article class="card">
+          <h3>2. Git es la base de datos</h3>
+          <p>El estado vive en un JSONL versionado. Revertir un commit
+            revierte también el estado del trabajo.</p>
+        </article>
+        <article class="card">
+          <h3>3. Evidencia, no un booleano</h3>
+          <p>Cerrar una tarea exige adjuntar evidencia: un PR, un test run,
+            un trace id. "Done" sin evidencia no cuenta.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="contacto" class="section section-contact">
+      <h2>Hablemos</h2>
+      <p>Dejanos tu correo y te compartimos el repo completo del POC.</p>
+      <form id="contact-form" novalidate>
+        <div class="field">
+          <label for="email">Correo</label>
+          <input type="email" id="email" name="email" required placeholder="vos@empresa.com" />
+          <span class="error" id="email-error" role="alert"></span>
+        </div>
+        <div class="field">
+          <label for="message">Mensaje (opcional)</label>
+          <textarea id="message" name="message" rows="3" placeholder="Contanos qué te gustaría automatizar"></textarea>
+        </div>
+        <button type="submit">Enviar</button>
+        <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>Chalatech · POC de metodología aiscrum · <a href="https://github.com/Chalatech/aiscrum-landing-poc">ver repo en GitHub</a></p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
